@@ -2,7 +2,8 @@ const ButtonDelete = ({ setTodos, id }) => {
   return (
     <button
       className="cursor-pointer"
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         setTodos((prev) => prev.filter((todo) => todo.id !== id));
       }}
     >
