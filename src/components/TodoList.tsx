@@ -3,9 +3,9 @@ import ButtonDelete from "./ButtonDelete";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([
-    { text: "By grocies", isCompleted: false },
-    { text: "walk the dog", isCompleted: false },
-    { text: "laudry", isCompleted: true },
+    { id: 1, text: "By grocies", isCompleted: false },
+    { id: 2, text: "walk the dog", isCompleted: false },
+    { id: 3, text: "laudry", isCompleted: true },
   ]);
   return (
     <ul>
@@ -18,8 +18,9 @@ const TodoList = () => {
             className={`${todo.isCompleted ? "line-through text-[#ccc]" : ""}`}
           >
             {todo.text}
-          </span>{" "}
-          <ButtonDelete />
+          </span>
+
+          <ButtonDelete id={todo.id} setTodos={setTodos} />
         </li>
       ))}
     </ul>
