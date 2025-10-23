@@ -7,6 +7,9 @@ const TodoList = () => {
     { id: 2, text: "walk the dog", isCompleted: false },
     { id: 3, text: "laudry", isCompleted: true },
   ]);
+
+  const totalNumberOfTodos = todos.length;
+
   return (
     <ul>
       {todos.map((todo) => (
