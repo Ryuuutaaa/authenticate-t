@@ -3,6 +3,12 @@ import ButtonDelete from "./ButtonDelete";
 const TodoList = ({ todos, setTodos }) => {
   return (
     <ul>
+      {todos.length === 0 ? (
+        <li className="h-full flex justify-center items-center font-semibold">
+          Started by adding a todo
+        </li>
+      ) : null}
+
       {todos.map((todo) => (
         <li
           key={todo.text}

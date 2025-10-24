@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 const AddTodoForm = ({ todos, setTodos }) => {
-  const [todoText, setTodoText] = useState("");
+  const [todoText, setTodoText] = useState([]);
   return (
     <>
       <form
