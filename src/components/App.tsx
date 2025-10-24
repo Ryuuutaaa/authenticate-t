@@ -23,7 +23,7 @@ const App = () => {
 
           <TodoList todos={todos} setTodos={setTodos} />
 
-          <Sidebar />
+          <Sidebar todos={todos} setTodos={setTodos} />
         </main>
 
         <Footer />
