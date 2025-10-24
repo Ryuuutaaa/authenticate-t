@@ -1,15 +1,6 @@
-import { useState } from "react";
 import ButtonDelete from "./ButtonDelete";
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "By grocies", isCompleted: false },
-    { id: 2, text: "walk the dog", isCompleted: false },
-    { id: 3, text: "laudry", isCompleted: true },
-  ]);
-
-  const totalNumberOfTodos = todos.length;
-
+const TodoList = ({ todos, setTodos }) => {
   return (
     <ul>
       {todos.map((todo) => (
