@@ -1,7 +1,7 @@
 const Counter = ({ todos }) => {
   return (
     <p>
-      <b>0</b> / {todos.length} todos complated
+      <b>{todos.filter((todo) => todo.isCompleted).length}</b> / {todos.length} todos complated
     </p>
   );
 };
