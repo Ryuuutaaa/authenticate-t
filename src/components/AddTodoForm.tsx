@@ -3,19 +3,44 @@ import Button from "./Button";
 
 const AddTodoForm = ({ todos, setTodos }) => {
   const [todoText, setTodoText] = useState([]);
+  const addTodo = (todoText) => {
+    if (todos.length >= 3) {
+      alert("Log in to add more th an 3 moore");
+      return;
+    } else {
+      setTodos((prev) => [
+        ...prev,
+        {
+          id: prev.length + 1,
+          text: todoText,
+          isCompleted: false,
+        },
+      ]);
+    }
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setTodos((prev) => [
-            ...prev,
-            {
-              id: prev.length + 1,
-              text: todoText,
-              isCompleted: false,
-            },
-          ]);
+
+          if (todos.length >= 3) {
+            alert("Log in to add more 3 than");
+            return;
+          } else {
+            setTodos((prev) => [
+              ...prev,
+              {
+                id: prev.length + 1,
+                text: todoText,
+                isCompleted: false,
+              },
+            ]);
+          }
         }}
       >
         <h2 className="font-medium text-[#231d15]">Add a todo</h2>
