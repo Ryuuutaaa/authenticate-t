@@ -1,35 +1,23 @@
-import { useState } from "react";
 import BackgroundHeading from "./BackgroundHeading";
-import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 import TodoList from "./TodoList";
 
-const App = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "By grocies", isCompleted: false },
-    { id: 2, text: "walk the dog", isCompleted: false },
-    { id: 3, text: "laudry", isCompleted: true },
-  ]);
-
-  // const totalNumberOfTodos = todos.length;
+function App() {
   return (
-    <div className="flex items-center justify-center font-sans bg-[#f1d4b3] min-h-screen">
+    <div className="font-sans bg-[#f1d4b3] min-h-screen flex justify-center items-center flex-col">
       <BackgroundHeading />
 
-      <div className="relative flex flex-col">
-        <main className="w-[972px] h-[636px] bg-white rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.0)] grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr] overflow-hidden">
-          <Header todos={todos} />
+      <main className="relative w-[972px] shadow-[0_4px_4px_rgb(0,0,0,0.08)] h-[636px] bg-[#fff] rounded-[8px] overflow-hidden grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr]">
+        <Header />
+        <TodoList />
+        <Sidebar />
+      </main>
 
-          <TodoList todos={todos} setTodos={setTodos} />
-
-          <Sidebar todos={todos} setTodos={setTodos} />
-        </main>
-
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;

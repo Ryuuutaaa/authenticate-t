@@ -1,15 +1,16 @@
-const ButtonDelete = ({ setTodos, id }) => {
+import { useTodosContext } from "../lib/hook";
+
+export default function DeleteButton({ id }) {
+  const { deleteTodo } = useTodosContext();
+
   return (
     <button
-      className="cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
-        setTodos((prev) => prev.filter((todo) => todo.id !== id));
+        deleteTodo(id);
       }}
     >
       ❌
     </button>
   );
-};
-
-export default ButtonDelete;
+}

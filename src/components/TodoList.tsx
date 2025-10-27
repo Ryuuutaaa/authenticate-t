@@ -1,40 +1,42 @@
-import ButtonDelete from "./ButtonDelete";
+import { useTodosContext } from "../lib/hooks";
+import DeleteButton from "./ButtonDelete";
 
-const TodoList = ({ todos, setTodos }) => {
+export default function TodoList() {
+  const { todos, toggleTodo, isLoading } = useTodosContext();
+
   return (
-    <ul>
+    <ul className="col-[1/2] row-[2/3] bg-[#fff] [scrollbar-width:thin] relative">
+      {isLoading && (
+        <li className="h-full flex justify-center items-center font-semibold">
+          Loading todos...
+        </li>
+      )}
+
       {todos.length === 0 ? (
         <li className="h-full flex justify-center items-center font-semibold">
-          Started by adding a todo
+          Start by adding a todo
         </li>
       ) : null}
 
-      {todos.map((todo) => (
-        <li
-          key={todo.text}
-          className="flex justify-between items-center px-8 h-[50px] text-[14px] cursor-pointer border-b border-black/[8%]"
-          onClick={() => {
-            setTodos(
-              todos.map((t) => {
-                if (t.id === todo.id) {
-                  return { ...t, isCompleted: !t.isCompleted };
-                }
-                return t;
-              })
-            );
-          }}
-        >
-          <span
-            className={`${todo.isCompleted ? "line-through text-[#ccc]" : ""}`}
+      {todos.map((todo) => {
+        return (
+          <li
+            key={todo.id}
+            className={`flex justify-between items-center px-8 h-[50px] text-[14px] cursor-pointer border-b border-b-[rgba(0,0,0,0.08)]`}
+            onClick={() => {
+              toggleTodo(todo.id);
+            }}
           >
-            {todo.text}
-          </span>
+            <span
+              className={`${todo.completed ? "line-through text-[#ccc]" : ""}`}
+            >
+              {todo.content}
+            </span>
 
-          <ButtonDelete id={todo.id} setTodos={setTodos} />
-        </li>
-      ))}
+            <DeleteButton id={todo.id} />
+          </li>
+        );
+      })}
     </ul>
   );
-};
-
-export default TodoList;
+}

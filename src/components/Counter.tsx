@@ -1,9 +1,11 @@
-const Counter = ({ todos }) => {
+import { useTodosContext } from "../lib/hook";
+
+export default function Counter() {
+  const { totalCount, completedCount } = useTodosContext();
+
   return (
     <p>
-      <b>0</b> / {todos.length} todos complated
+      <b>{completedCount}</b> / {totalCount} todos completed
     </p>
   );
-};
-
-export default Counter;
+}
